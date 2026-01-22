@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahek Maniyar | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#9b5cff;
+  --accent2:#00bfae;
+  --bg:#0b0616;
+  --glass:rgba(255,255,255,0.12);
+  --border:rgba(255,255,255,0.25);
+  --text:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth;}
+
+section{padding:70px 8%;}
+h2{text-align:center;font-size:2.3rem;margin-bottom:35px;color:var(--accent);}
+
+.glass,.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(14px);
+  border-radius:22px;
+  padding:25px;
+  box-shadow:0 18px 35px rgba(0,0,0,.45);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px rgba(155,92,255,.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
+
+.btn{
+  display:inline-block;
+  padding:11px 22px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:25px;
+  text-decoration:none;
+  margin-right:10px;
+  transition:.3s;
+  font-weight:600;
+}
+.btn:hover{background:var(--accent2);}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--accent);
+}
+.btn-outline:hover{
+  background:var(--accent);
+}
+
+/* HERO (REFINED) */
+.hero{
+  min-height:85vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  background:linear-gradient(135deg,#2b124c,#0b0616);
+}
+
+.hero-text{
+  max-width:600px;
+}
+
+.hero-role{
+  font-size:2.4rem;
+  font-weight:700;
+  line-height:1.2;
+}
+
+.hero-role span{
+  color:var(--accent);
+}
+
+.hero-name{
+  margin-top:10px;
+  font-size:1.2rem;
+  opacity:.85;
+}
+
+.typing{
+  margin:15px 0 5px;
+  color:var(--accent2);
+  font-weight:600;
+}
+
+.hero-tagline{
+  font-size:.95rem;
+  opacity:.85;
+  margin-bottom:18px;
+}
+
+.hero-meta{
+  font-size:.9rem;
+  opacity:.8;
+  margin-bottom:22px;
+}
+
+.hero-img{
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--accent);
+  transition:.4s;
+}
+.hero-img:hover{
+  box-shadow:0 0 35px rgba(155,92,255,.6);
+}
+.hero-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* SKILLS */
+.skill{margin-bottom:18px;}
+.skill span{float:right;}
+.bar{
+  height:8px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:6px;
+}
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:width 1.5s ease;
+}
+
+/* TECH STACK */
+.tech-stack{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+.tech-stack span{
+  padding:10px 18px;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  font-weight:600;
+  font-size:.95rem;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  transition:.3s;
+}
+.tech-stack span:hover{transform:scale(1.12);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal.active{opacity:1;transform:none;}
+
+/* FLOATING */
+.whatsapp,.call-btn,.email-btn{
+  position:fixed;right:20px;
+  padding:14px;border-radius:50%;
+  font-size:20px;color:#fff;
+  text-decoration:none;
+}
+.whatsapp{bottom:20px;background:#25d366;}
+.call-btn{bottom:80px;background:#4caf50;}
+.email-btn{bottom:140px;background:var(--accent);}
+
+/* THEME */
+.theme-btn{
+  position:fixed;top:20px;right:20px;
+  border:none;padding:10px;
+  border-radius:50%;font-size:18px;
+  background:var(--accent);color:#fff;
+  cursor:pointer;
+}
+.light{background:#f4f4f4;color:#111;}
+.light .glass,.light .card{background:#fff;color:#111;border:1px solid #ccc;}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+
+<body>
+
+<button class="theme-btn" id="themeToggle">🌙</button>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="hero-text">
+    <div class="hero-role">
+      Frontend Developer<br>
+      <span>Cloud Computing Learner</span>
+    </div>
+
+    <div class="hero-name">Mahek Maniyar • TY BCA (Science)</div>
+
+    <div class="typing"></div>
+
+    <div class="hero-tagline">
+        <br>
+      Building clean, user-focused web interfaces with modern technologies.
+    </div>
+
+    <div class="hero-meta">
+      🟢 Open for Internship <br><br>
+      📍 Pune <br><br>
+       English | Hindi | Marathi<br>
+    </div>
+
+    <a class="btn" href="Mahek_resume.pdf" download>Download CV</a><br><br>
+    <a class="btn btn-outline" href="Mahek_resume.pdf" target="_blank">View CV</a>
+  </div>
+  <div class="hero-img">
+    <img src="mahek_img.jpeg" alt="Mahek Maniyar">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="reveal">
+<h2>About Me</h2>
+<div class="grid">
+  <div class="card">
+    <p><b>TY BCA (Science)</b> student passionate about Frontend Development & Cloud Computing.</p>
+    <p>Linux ✔ | CCNA (Ongoing) | AWS (Upcoming)</p>
+  </div>
+  <div class="card">
+    <h3>Strengths</h3>
+    <ul>
+      <li>Quick Learner</li>
+      <li>Good Time Management</li>
+      <li>Self Motivated</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="reveal">
+<h2>Education Journey</h2>
+<div class="grid">
+  <div class="card">
+    <h3>🎓 BCA Science</h3>
+    <p>FY: 9.5 CGPA</p>
+    <p>SY: 9.5 CGPA</p>
+    <p>TY Sem 5: 9.2 CGPA</p>
+  </div>
+  <div class="card">
+    <h3>🏫 HSC (Science)</h3>
+    <p>76% – D. Y. Patil College</p>
+  </div>
+  <div class="card">
+    <h3>📘 SSC</h3>
+    <p>87% – New Millennium School</p>
+  </div>
+  <div class="card">
+    <h3>💻 Certifications</h3>
+    <p>Linux ✔</p>
+    <p>CCNA (Ongoing)</p>
+    <p>AWS (Upcoming)</p>
+  </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="reveal">
+<h2>Skills</h2>
+<div class="glass">
+
+  <div class="skill">HTML <span>90%</span>
+    <div class="bar"><div class="fill" data-width="90%"></div></div>
+  </div>
+
+  <div class="skill">CSS <span>85%</span>
+    <div class="bar"><div class="fill" data-width="85%"></div></div>
+  </div>
+
+  <div class="skill">JavaScript <span>75%</span>
+    <div class="bar"><div class="fill" data-width="75%"></div></div>
+  </div>
+
+  <div class="skill">Python <span>50%</span>
+    <div class="bar"><div class="fill" data-width="50%"></div></div>
+  </div>
+
+  <div class="skill">PHP <span>40%</span>
+    <div class="bar"><div class="fill" data-width="40%"></div></div>
+  </div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="reveal">
+<h2>Projects</h2>
+
+<div class="grid">
+
+  <!-- Project 1 -->
+  <div class="card">
+    <h3>🍽️ Meals & Memories</h3>
+    <p>
+      A recipe-based web application showcasing traditional and modern recipes
+      with categories, images, and detailed cooking steps.
+    </p>
+    <p><b>Tech Used:</b> HTML, CSS, JavaScript</p>
+    <a class="btn" href="#" target="_blank">Live Demo</a>
+    <a class="btn btn-outline" href="#" target="_blank">GitHub</a>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="card">
+    <h3>🌾 Kisan Yashogatha</h3>
+    <p>
+      An agriculture-focused website providing crop information such as growth
+      duration, requirements, advantages, disadvantages, and images.
+    </p>
+    <p><b>Tech Used:</b> HTML, CSS, JavaScript, PHP</p>
+    <a class="btn" href="#" target="_blank">Live Demo</a>
+    <a class="btn btn-outline" href="#" target="_blank">GitHub</a>
+  </div>
+
+</div>
+</section>
+
+
+<!-- TECH STACK -->
+<section class="reveal">
+<h2>Tech Stack</h2>
+<div class="tech-stack">
+  <span>HTML5</span>
+  <span>CSS3</span>
+  <span>JavaScript</span>
+  <span>Python 🐍</span>
+  <span>PHP</span>
+  <span>Linux</span>
+  <span>CCNA</span>
+  <span>AWS (Upcoming)</span>
+</div>
+</section>
+
+<!-- FLOATING CONTACT -->
+<a class="whatsapp" href="https://wa.me/917744873870" target="_blank">💬</a>
+<a class="call-btn" href="tel:+917744873870">📞</a>
+<a class="email-btn" href="mailto:maniyarmahek35@gmail.com">✉️</a>
+
+<script>
+/* Typing */
+const text="Frontend • UI Focus • Cloud Basics";
+let i=0;
+setInterval(()=>{
+  document.querySelector(".typing").innerText=text.slice(0,i++);
+  if(i>text.length)i=0;
+},120);
+
+/* Reveal + skill bars */
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-100){
+      el.classList.add("active");
+      el.querySelectorAll(".fill").forEach(bar=>{
+        bar.style.width = bar.dataset.width;
+      });
+    }
+  });
+});
+
+/* Theme */
+document.getElementById("themeToggle").onclick=()=>{
+  document.body.classList.toggle("light");
+};
+</script>
+
+</body>
+</html>
+
+
